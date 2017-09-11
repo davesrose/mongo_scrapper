@@ -1,0 +1,29 @@
+{
+  "name": "mongo_scrapper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davesrose/mongo_scrapper.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davesrose/mongo_scrapper/issues"
+  },
+  "homepage": "https://github.com/davesrose/mongo_scrapper#readme",
+  "dependencies": {
+    "body-parser": "^1.18.0",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.15.4",
+    "express-handlebars": "^3.0.0",
+    "moment": "^2.18.1",
+    "mongojs": "^2.4.1",
+    "mongoose": "^4.11.10",
+    "request": "^2.81.0"
+  }
+}
