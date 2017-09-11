@@ -72,13 +72,15 @@ router.get('/scrape', function(req, res) {
         result.summary = $(this).find($(".gs-c-promo-summary")).text().trim() + ""; //convert to string for error handling later
  
         result.time = $(this).find($("time")).attr("datetime");
-        result.time = moment(result.time).format('MMMM Do YYYY, h:mm A');
+        result.time = moment(result.time).format('MMMM Do YYYY, h:mm A'); //convert time to moment format
 
+        //BBC News returns a BBC World News TV link...providing if statement to eliminate
         if(result.title === "BBC World News TV") {
           result.title = "";
           result.summary = "";
         }
 
+        //BBC News returns a BBC World Radio link...providing if statement to eliminate
         if(result.title === "AudioBBC World Service Radio") {
           result.title = "";
           result.summary = "";
@@ -91,7 +93,7 @@ router.get('/scrape', function(req, res) {
           // Due to async, moongoose will not save the articles fast enough for the duplicates within a scrape to be caught
           if(titlesArray.indexOf(result.title) == -1){
 
-            // Push the saved item to our titlesArray to prevent duplicates thanks the the pesky Onion...
+            // Push the saved item to our titlesArray to prevent duplicates...
             titlesArray.push(result.title);
 
             // Only add the entry to the database if is not already there
@@ -100,7 +102,7 @@ router.get('/scrape', function(req, res) {
               // If the count is 0, then the entry is unique and should be saved
               if(test == 0){
 
-                // Using the Article model, create a new entry (note that the "result" object has the exact same key-value pairs of the model)
+                // Using the Article model, create a new entry
                 var entry = new Article (result);
 
                 // Save the entry to MongoDB
@@ -135,7 +137,7 @@ router.get('/scrape', function(req, res) {
       }
     });
 
-    // Redirect to the Articles Page, done at the end of the request for proper scoping
+    // Redirect to the Articles Page, done at the end of the request
     res.redirect("/articles");
 
   });
@@ -157,7 +159,7 @@ router.post('/add/comment/:id', function (req, res){
 
   var updated = req.body.updated
 
-  // "result" object has the exact same key-value pairs of the "Comment" model
+  // "result" object has the exact same key-values of the "Comment" model
   var result = {
     author: commentAuthor,
     content: commentContent,
