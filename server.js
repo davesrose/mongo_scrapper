@@ -26,7 +26,7 @@ app.set('view engine', 'handlebars');
 // ---------------------------------------------------------------------------------------------------------------
 // Connect to localhost if not a production environment
 if(process.env.NODE_ENV == 'production'){
-  mongoose.connect('mongodb://');
+  mongoose.connect('mongodb://heroku_btgf12d7:2soav23gccbsdiamshu3qchvis@ds133104.mlab.com:33104/heroku_btgf12d7');
 }
 else{
   mongoose.connect('mongodb://localhost/news-scraper');
