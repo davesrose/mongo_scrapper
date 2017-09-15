@@ -157,6 +157,7 @@ router.post('/add/comment/:id', function (req, res){
   // Collect Comment Content
   var commentContent = req.body.comment;
 
+  //Collect time when comment posted
   var updated = req.body.updated
 
   // "result" object has the exact same key-values of the "Comment" model
